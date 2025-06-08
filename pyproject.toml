@@ -7,10 +7,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+fastapi = "^0.115.12"
 
 [tool.poetry.group.dh.dependencies]
 dh-platform = {git = "https://github.com/JohnSoi/dh-platform.git"}
 dh-access = {git = "https://github.com/JohnSoi/dh-access.git"}
+dh-contacts = {git = "https://github.com/JohnSoi/dh-contacts.git"}
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"

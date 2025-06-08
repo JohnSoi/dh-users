@@ -4,12 +4,12 @@ __author__: str = "Старков Е.П."
 
 from datetime import datetime
 
-from dh_platform.models import *
-from sqlalchemy import String, DateTime
+from dh_platform import models
+from sqlalchemy import DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 
-class User(BaseModel, IDMixin, UUIDMixin, TimestampMixin, SoftDeleteMixin):
+class User(models.BaseModel, models.IDMixin, models.UUIDMixin, models.TimestampMixin, models.SoftDeleteMixin):
     """
     Модель пользователя
 
@@ -17,6 +17,7 @@ class User(BaseModel, IDMixin, UUIDMixin, TimestampMixin, SoftDeleteMixin):
         >>> user: User = User(id=1)
         >>> print(user.full_name) # ФИО пользователя
     """
+
     surname: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
     name: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
     second_name: Mapped[str | None] = mapped_column(String(50), nullable=True, index=True)
