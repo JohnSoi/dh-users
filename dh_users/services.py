@@ -21,6 +21,6 @@ class UserService(BaseService):
         await message_bus.publish(events.UserValidateEvent(**create_data))
 
     @classmethod
-    async def _after_update(cls, update_data: dict) -> None:
+    async def _after_create(cls, entity_data: UserModel) -> None:
         """Обработка после создания"""
-        await message_bus.publish(events.UserAddEvent(**update_data))
+        await message_bus.publish(events.UserAddEvent(**update_data.dict()))
