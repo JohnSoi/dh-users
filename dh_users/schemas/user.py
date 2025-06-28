@@ -5,7 +5,7 @@ __author__: str = "Старков Е.П."
 
 from datetime import date
 
-from dh_access.schemas import AccessPublicData, AccessValidateData
+from dh_access.schemas import AccessPublicData, AccessValidateData, RoleIdData
 from dh_contacts.schemas import UserRegisterContactField
 from dh_platform import schemas
 from pydantic import BaseModel, Field, field_validator
@@ -43,7 +43,7 @@ class UserDataOut(
     ...
 
 
-class UserRegister(BaseUserData, AccessValidateData, UserRegisterContactField):
+class UserRegister(BaseUserData, AccessValidateData, UserRegisterContactField, RoleIdData):
     """Данные для регистрации"""
 
     @classmethod
