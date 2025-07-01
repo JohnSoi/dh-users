@@ -1,6 +1,8 @@
 """Модуль для моделей обработки и создания событий"""
 
 __author__: str = "Старков Е.П."
+
+from uuid import UUID
 from dh_platform.patterns.message_bus import Event
 
 
@@ -30,3 +32,8 @@ class UserAddEvent(UserValidateEvent):
 
     user_id: int
     role: int | None
+
+
+class UserDeleteEvent(Event):
+    user_id: int
+    user_uuid: UUID

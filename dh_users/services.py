@@ -30,3 +30,11 @@ class UserService(BaseService):
             user_id=entity_data.id,
             role=create_data.get("role_id"),
         ))
+
+    @classmethod
+    async def _before_delete(cls, entity_data: UserModel) -> None:
+        await message_bus.publish(events.UserDeleteEvent(
+            user_id=entity_data.id,
+            user_uuid=entity_data.uuid
+        ))
+

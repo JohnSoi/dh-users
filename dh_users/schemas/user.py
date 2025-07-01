@@ -36,7 +36,6 @@ class UserDataOut(
     schemas.EntityUUID,
     schemas.OperationDateTime,
     schemas.SoftDeletedDateTime,
-    AccessPublicData,
 ):
     """Входные данные пользователя"""
 
