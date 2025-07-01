@@ -37,3 +37,4 @@ class UserAddEvent(UserValidateEvent):
 class UserDeleteEvent(Event):
     user_id: int
     user_uuid: UUID
+    force_delete: bool

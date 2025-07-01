@@ -2,10 +2,11 @@
 
 __author__: str = "Старков Е.П."
 
-from dh_platform.patterns.message_bus import message_bus
+from dh_platform.patterns.message_bus import message_bus, Event
 from dh_platform.services import BaseService
 
 from dh_users.models import UserModel
+from dh_users.schemas.events.operation import UserDeleteEvent
 
 from .schemas import events
 
@@ -32,9 +33,10 @@ class UserService(BaseService):
         ))
 
     @classmethod
-    async def _before_delete(cls, entity_data: UserModel) -> None:
+    async def _before_delete(cls, entity_data: UserModel, force_delete: bool) -> None:
         await message_bus.publish(events.UserDeleteEvent(
             user_id=entity_data.id,
-            user_uuid=entity_data.uuid
+            user_uuid=entity_data.uuid,
+            force_delete=force_delete,
         ))
 

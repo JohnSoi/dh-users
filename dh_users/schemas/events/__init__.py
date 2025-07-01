@@ -2,4 +2,4 @@
 
 __author__: str = "Старков Е.П."
 
-from .operation import UserAddEvent, UserValidateEvent
+from .operation import UserAddEvent, UserValidateEvent, UserDeleteEvent
